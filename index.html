@@ -11,11 +11,18 @@
     <!-- tete de ma page--> 
         <header class="header">
         <a href="index.html" class="logo">L'Impériale<span>.</span></a>
+            <!-- BOUTON HAMBURGER -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Accueil</a></li>
                 <li><a href="menu1.html">Menu & Services</a></li>
-                <li><a href="contact1.html">Contact</a></li>
+                <li><a href="contact1.html">Commander</a></li>
             </ul>
         </nav>
         <!-- Section Héroïque avec image de fond -->
@@ -61,7 +68,28 @@
         </div>
     </footer>
 
+<script>
+    // GESTION DU MENU HAMBURGER MOBILE
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
 
+if (hamburger && navLinks) {
+  // Ouvre ou ferme le menu au clic sur le bouton hamburger
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+  });
+
+  // Ferme automatiquement le menu lorsqu'on clique sur un lien de la liste
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("active");
+    });
+  });
+}
+
+</script>
    
 </body>
 </html>

@@ -112,6 +112,79 @@ ul {
   transform: translateY(-3px);
 }
 
+/* ==========================================================================
+   MENU HAMBURGER RESPONSIVE
+   ========================================================================== */
+
+/* Masqué par défaut sur PC */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 5px;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: var(--text-light, #f8f9fa);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animation du hamburger en croix (X) lorsqu'il est actif */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+  background-color: var(--primary-orange, #ff6b00);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+  background-color: var(--primary-orange, #ff6b00);
+}
+
+/* Adaptation pour les écrans de moins de 768px (Tablettes et Mobiles) */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; /* Affiche le bouton sur mobile */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.98);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 0;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    
+    /* Effet replié par défaut */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+
+  /* État ouvert du menu mobile */
+  .nav-links.active {
+    max-height: 300px;
+    opacity: 1;
+    padding: 30px 0;
+  }
+}
+
 
 /* ==========================================================================
    SECTION HÉROÏQUE (AVEC IMAGE DE FOND)
